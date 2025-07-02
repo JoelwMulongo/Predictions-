@@ -1,7 +1,7 @@
 name: Upload Dataset to Kaggle
 on:
   push:
-    branches: [ main ] # Triggers on push to the main branch
+    branches: [ master ] # Triggers on push to the master branch
 jobs:
   upload:
     runs-on: ubuntu-latest
