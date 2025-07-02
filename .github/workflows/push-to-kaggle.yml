@@ -1,0 +1,20 @@
+name: Upload Dataset to Kaggle
+on:
+  push:
+    branches: [ main ] # Triggers on push to the main branch
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push Dataset to Kaggle
+        uses: jaimevalero/push-kaggle-dataset@v3.2
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        with:
+          id: "joelmulongo/predictions" # e.g., johnsmith/my-dataset
+          title: "predictions"
+          subtitle: "Optional Subtitle"
+          files: "corona_tested_individuals_ver_006.english.csv" # File(s) to upload, supports wildcards (e.g., "*.csv")
+          is_public: true # Set to false for private datasets
